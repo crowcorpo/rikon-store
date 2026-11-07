@@ -7,8 +7,8 @@ export const supabase = createClient(supabaseUrl, supabaseKey, {
     auth: {
         persistSession: true,
         autoRefreshToken: true,
-        detectSessionInUrl: false,
+        detectSessionInUrl: true,
         storage: window.localStorage,
-        lock: false
+        lock: async (_name, _acquireTimeout, fn) => await fn()
     }
 });
